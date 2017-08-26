@@ -1,0 +1,29 @@
+0.  pneumonoultramicroscopicsilicovolcanoconiosis is a pneumoconiosis caused by inhalation of very fine silicate or quartz dust.
+    Its also the longest word in the dictionary equal to 45 letters.
+    
+1.  getrusage returns resouce usage for the calling process, all children of the calling process or the calling thread as specified
+    by the user.
+
+2.  There are 16 variables in the struct rusage.
+
+3.  We pass before and after by reference because we save memory and time. If we pass by value, every time we use the function
+    calculate we would create copies of the structs. This in turn would increase the time and the memory used by our program.
+
+4.  main reads the words from a file through the use of a for loop. The for loop is initiated by setting an int c as fgetc(fp).
+    Here fp is the file pointer and in the beginning of the program it will be the beginning of the file. Function fgetc just gets
+    the next character from the file. At the beginning of each loop c is once again set as fgetc(fp), thus c always skips to the
+    next character after each loop. The loop continues till c is not equal to EOF which is only possible if we reach the end of our
+    file. If c is an alphabet or an apostophe, it is appended to the word. If however there is a string of letters with more letters
+    than the longest word in the dictionary, then the file pointer is skipped to the next word and preparation for a new word is 
+    done. If a word with numbers in between is encountered, the file pointer is again skipped to the next word and the program 
+    prepares for a new word. If however the program encounters a character which is not an alphabet, an apostrophe or a digit and the number
+    of letters in the current word are greater than zero, then that means we have a found a whole word and reached the end of the
+    word. In this case the current word is terminated by appending '\0' to it. The word counter is updated as well. The word is then
+    passed to spellchecking function which will return if it was misspelled or not. The benchmarks are updated and the program
+    prepares for the next word. 
+
+5.  We don't use fscanf because our program will encounter errors if there are digits or some other symbols in the words or if the
+    length of the word is longer than the maximum allowed length. 
+
+6.  The parameters for check and load are declared as const so that these functions cannot modify the string (ie the word and the 
+    name of the dictionary).
